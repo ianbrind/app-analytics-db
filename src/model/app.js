@@ -1,6 +1,14 @@
 const db = require("../db/main");
+const uuidv4 = require("uuid/v4");
 
 let model = db.Schema({
+    uuid: {
+        type: String,
+        index: true,
+        unique: true,
+
+        default: uuidv4
+    },
     createdon: {
 		type: Date, 
 		default: Date.now
@@ -13,13 +21,14 @@ let model = db.Schema({
         type: Boolean,
         default: true
     }
-}, {strict: false});
+});
 
 model.pre("save", function (next) {
 	// Keep track of when the object was last updated
 	this.updatedon = new Date();
 	next();
 });
+
 
 module.exports = db.model("App", model);
 

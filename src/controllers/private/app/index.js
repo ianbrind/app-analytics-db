@@ -4,7 +4,7 @@ const Processor = require("../../../lib/classes/processor");
 const CrudProcessors = {
     "Get": "app/get",
     "Save": "app/save",
-    "List": "app/list",
+    "List": "app/getlist",
     "Delete": "app/delete",
 }
 

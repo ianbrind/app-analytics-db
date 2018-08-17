@@ -17,10 +17,9 @@ module.exports = {
     database: {
         host: "localhost",//Host 
         port: 27017, // Port running mongodb on the machine
-        name: "femgoose", // Name of the mongodb database,
+        name: "app-analytics", // Name of the mongodb database,
         mongoOptions: {
 
-            replicaSet: "femgoose", //DEFAULT TO REPLICA SET, the name of replica set
             // auth: { //User authentication credentials
             //     user: "",
             //     password: ""
