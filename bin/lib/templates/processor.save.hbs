@@ -1,0 +1,24 @@
+const {{modelName}} = require("../../model/{{modelModuleName}}");
+const Processor = require("../../lib/classes/processor");
+
+const saveFn = (props, cb) => {
+    if (Object.hasOwnProperty.call(props, "_id")) {
+        {{modelName}}.findByIdAndUpdate(props._id, { $set: props }, {new: true}, cb);
+    } else {
+	    let obj = new {{modelName}}(props);
+	    obj.save(cb);
+    }
+};
+
+const processor = (data, cb) => {
+	saveFn(data.props, (err, result) => {
+		if (err) {
+            console.error(err);
+			return cb (new Processor.Response(err, {message: "Error creating {{modelName}}."}, Processor.getStatusCode("error")));
+		}
+
+		return cb (new Processor.Response(null, {message: "Success"}));
+	});
+};
+
+module.exports = processor;

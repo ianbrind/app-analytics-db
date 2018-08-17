@@ -1,0 +1,30 @@
+const db = require("../db/main");
+
+let model = db.Schema({
+    createdon: {
+		type: Date, 
+		default: Date.now
+	},
+	updatedon: {
+		type: Date, 
+		default: Date.now
+	},
+    {{#if modelSoftDelete}}
+    active: {
+        type: Boolean,
+        default: true
+    }
+    {{/if}}
+}, {strict: false});
+
+model.pre("save", function (next) {
+	// Keep track of when the object was last updated
+	this.updatedon = new Date();
+	next();
+});
+
+module.exports = db.model("{{modelName}}", model);
+
+/**
+ * The file was generated using the femgoose cli-tools, femgoose will be happy!
+ */

@@ -1,0 +1,19 @@
+const {{modelName}} = require("../../model/{{modelModuleName}}");
+const ProcessorResponse = require("../../lib/classes/processor-response");
+
+const deleteModel = (props, cb) => {
+	{{modelName}}.remove({_id: props._id}, cb);
+};
+
+const processor = (data, cb) => {
+	deleteModel(data.props, (err, result) => {
+		if (err) {
+            console.error(err);
+			return cb (new ProcessorResponse(err, {message: "Error deleting {{modelName}}."}, 500));
+		}
+
+		return cb (new ProcessorResponse(null, {message: "Success"}));
+	});
+};
+
+module.exports = processor;

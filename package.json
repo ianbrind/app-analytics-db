@@ -1,0 +1,98 @@
+{
+  "name": "femgoose",
+  "version": "1.0.0",
+  "description": "File system structure for an Express (NodeJS) + Mongoose (MongoDB) API.",
+  "main": "src/server.js",
+  "bin": {
+    "femgoose": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "windows-dev": "SET NODE_ENV=development&& node src/server.js",
+    "windows-prod": "SET NODE_ENV=production&& forever start src/server.js",
+    "windows-prod-restart": "SET NODE_ENV=production&& forever restart src/server.js",
+    "windows-prod-stop": "forever stop src/server.js",
+    "unix-dev": "NODE_ENV=development node src/server.js",
+    "unix-dev-nodemon": "NODE_ENV=development nodemon src/server.js",
+    "unix-prod": "NODE_ENV=production forever start src/server.js",
+    "unix-prod-restart": "NODE_ENV=production forever restart src/server.js",
+    "unix-prod-stop": "forever stop server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fendorio/fs-express-mongoose.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Mongoose",
+    "Mongodb",
+    "API"
+  ],
+  "author": "Lee Cameron Brindley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fendorio/fs-express-mongoose/issues"
+  },
+  "homepage": "https://github.com/fendorio/fs-express-mongoose#readme",
+  "jest": {
+     "globals": {
+         "__DEV__": true
+     },
+     "testRegex": "./test/.*.js$",
+     "rootDir": "."
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.1",
+    "commander": "^2.15.1",
+    "compression": "^1.6.2",
+    "connect-mongo": "^1.3.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.2",
+    "express-es6-template-engine": "^2.0.1",
+    "express-session": "^1.15.4",
+    "handlebars": "^4.0.11",
+    "inquirer": "^5.2.0",
+    "jwt-simple": "^0.5.1",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.9.6",
+    "multer": "^1.3.0",
+    "path": "^0.12.7",
+    "sharp": "^0.19.0",
+    "uid-safe": "^2.1.4"
+  },
+  "contributors": [
+    {
+      "name": "Ian Brindley",
+      "email": null,
+      "url": "https://github.com/ianbrind",
+      "contributions": 11,
+      "additions": 860,
+      "deletions": 131,
+      "hireable": true
+    },
+    {
+      "name": "Simone Harvey",
+      "email": null,
+      "url": "https://github.com/simoneh93",
+      "contributions": 8,
+      "additions": 142,
+      "deletions": 4,
+      "hireable": true
+    },
+    {
+      "name": "Lee Brindley",
+      "email": null,
+      "url": "https://github.com/fendorio",
+      "contributions": 108,
+      "additions": 9341,
+      "deletions": 3355,
+      "hireable": true
+    }
+  ],
+  "devDependencies": {
+    "jest": "^22.4.3"
+  }
+}
