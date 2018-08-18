@@ -8,7 +8,7 @@ const App = require("./app");
 const responseStatuses = {
     "success": 200,
     "error": 500,
-    "notfound": 404
+    "notfound": 204
 };
 
 const Processor = {
@@ -30,6 +30,7 @@ const Processor = {
                     resolve(result); 
                 });
             } catch (e) {
+                console.log(e);
                 reject(new Processor.Response(e, {message: e.message}, Processor.getStatusCode("notfound")));
             }
         });

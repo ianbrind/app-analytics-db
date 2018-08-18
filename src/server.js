@@ -27,6 +27,9 @@ app.use(session({
 
 //For parsing request JSON
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 
 //Permit cross origin requests 
 app.use(cors());

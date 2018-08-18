@@ -17,7 +17,10 @@ const processor = (data, cb) => {
 			return cb (new Processor.Response(err, {message: "Error creating App."}, Processor.getStatusCode("error")));
 		}
 
-		return cb (new Processor.Response(null, {message: "Success"}));
+		return cb (new Processor.Response(null, {
+            message: "Success",
+            data: result
+        }));
 	});
 };
 

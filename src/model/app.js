@@ -6,8 +6,17 @@ let model = db.Schema({
         type: String,
         index: true,
         unique: true,
-
-        default: uuidv4
+        default: uuidv4 // Generates a uuid like 10ba038e-48da-487b-96e8-8d3b99b6d18a
+    },
+    user: { // link to an App entity
+        type: db.Schema.Types.ObjectId, ref: 'User'
+    },
+    name: {
+        type: String,
+        default: "App"
+    },
+    description: {
+        type: String
     },
     createdon: {
 		type: Date, 
