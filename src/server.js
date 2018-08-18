@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const AppClass = require("./lib/classes/app");
+const ExpressAppBootstrapper = require("./lib/classes/app");
 const compression = require("compression");
 const db = require("./db/main");
 const cors = require("cors");
@@ -13,7 +13,6 @@ const path = require("path");
 
 //Define the express app object
 let app = express();
-let App = new AppClass(app);
 
 app.use(session({
 	//Uses mongodb store as the default persistent session store.
@@ -86,7 +85,8 @@ fs.readdir("./src/controllers/private", (err, files) => {
 		res.status(404).redirect("/");
 	});
 
-	//Start the application, we're now live!
-	App.run(app);
+    //Start the application, we're now live!
+    let App = new ExpressAppBootstrapper(app);
+    App.run(app);
 });
 
