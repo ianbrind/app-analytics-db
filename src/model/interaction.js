@@ -3,14 +3,18 @@ const uuidv3 = require("uuid/v3");
 const uuidv4 = require("uuid/v4");
 
 let model = db.Schema({
-    uuid: uuid4, // Random uuid
+    uuid: {
+        type: String,
+        default: uuidv4, // Random uuid
+    },
     props: {}, // Running with the flexibility of Mixed to begin with
     intent: {
         type: String,
-        enum: ["Open", "Close", "Error", "Navigate", "Request", "Submit"]
+        enum: ["Open", "Close", "Error", "Navigate", "Request", "Submit"],
+        default: "Request"
     },
     app_uuid: { // link to an App entity
-        type: db.Schema.Types.ObjectId, ref: 'App'
+        type: db.Schema.Types.ObjectId, ref: 'App',
     },
     user_uuid: {
         type: String,
