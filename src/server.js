@@ -1,15 +1,15 @@
-const config = require("../config/index");
+const fs = require("fs");
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const compression = require("compression");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const ExpressAppBootstrapper = require("./lib/classes/app");
-const compression = require("compression");
-const db = require("./db/main");
-const cors = require("cors");
-const fs = require("fs");
 const es6Renderer = require("express-es6-template-engine");
-const path = require("path");
+const config = require("../config/index");
+const db = require("./db/main");
+const ExpressAppBootstrapper = require("./lib/classes/app");
 
 //Define the express app object
 let app = express();
