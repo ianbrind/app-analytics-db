@@ -51,6 +51,7 @@
     "connect-mongo": "^2.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "express-cassandra": "^2.2.3",
     "express-es6-template-engine": "^2.1.5",
     "express-session": "^1.15.6",
     "handlebars": "^4.0.11",

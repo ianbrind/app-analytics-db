@@ -11,6 +11,37 @@ const config = require("../config/index");
 const db = require("./db/main");
 const ExpressAppBootstrapper = require("./lib/classes/app");
 
+var models = require('express-cassandra');
+
+//Tell express-cassandra to use the models-directory, and
+//use bind() to load the models using cassandra configurations.
+models.setDirectory( __dirname + '/model/cassandra/').bind(
+    {
+        clientOptions: {
+            contactPoints: ['209.97.143.197'],
+            protocolOptions: { port: 9042 },
+            keyspace: 'mykeyspace',
+            queryOptions: {consistency: models.consistencies.one}
+        },
+        ormOptions: {
+            defaultReplicationStrategy : {
+                class: 'SimpleStrategy',
+                replication_factor: 1
+            },
+            migration: 'drop'
+        }
+    },
+    function(err) {
+        if(err) {
+            console.log("Cassandra Error", err);
+            throw err
+        }
+        // You'll now have a `person` table in cassandra created against the model
+        // schema you've defined earlier and you can now access the model instance
+        // in `models.instance.Person` object containing supported orm operations.
+    }
+);
+
 //Define the express app object
 let app = express();
 

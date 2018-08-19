@@ -50,4 +50,28 @@ router.post("/login", (req, res) => {
 	});
 });
 
+var models = require('express-cassandra');
+
+router.get("/cassandra", (req, res) => {
+    // var app = new models.instance.App({
+    //     name: "Test App 2"
+    // });
+    // app.save(function(err){
+    //     if(err) {
+    //         console.log(err);
+    //         return res.json(err);
+    //     }
+    //     res.json(app);
+    // });
+
+    models.instance.App.find({}, function(err, apps){
+        if (err) {
+            console.log(err);
+            return res.json(err);
+        }
+
+        res.json(apps);
+    });
+});
+
 module.exports = router;

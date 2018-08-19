@@ -5,7 +5,7 @@ module.exports = {
         //to spawn a node process for each available core
         //Sensible default would be dev false & production true  
         cluster: false,
-        port: 5556,
+        port: 5566,
         base_url: "/",
         http_host: "http://localhost/"
     },
